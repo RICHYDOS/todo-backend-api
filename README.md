@@ -24,21 +24,21 @@ The API provides a consistent communication protocol, so that various parts of t
   
   **Databases**: Any relational database like [SQLite](https://sqlite.org/index.html), [MySQL](https://www.mysql.com/) or [PostgresSQL](https://www.postgresql.org/) will be a good fit for most projects.
 
-  | Language | [C#](https://learn.microsoft.com/en-us/dotnet/csharp/) | [Go](https://go.dev/) | [Rust](https://www.rust-lang.org/) | [Python](https://www.python.org/) | [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) |  
-  |:---:|:---:|:---:|:---:|:---:|:---:|
-  | **Web framework** | [ASP.NET Core](https://dotnet.microsoft.com/en-us/apps/aspnet) | [Fibre](https://gofiber.io/) | [Axum](https://github.com/tokio-rs/axum) | [Flask](https://flask.palletsprojects.com/en/2.3.x/) | [Express](https://expressjs.com/) |
-  | **Database connector** | [EF Core](https://learn.microsoft.com/en-us/ef/core/) | [GORM](https://gorm.io/) | [Diesel](http://diesel.rs/) | [Peewee](http://docs.peewee-orm.com/en/latest/) | [Sequelize](https://sequelize.org/v3/) |
+  |        Language        |     [C#](https://learn.microsoft.com/en-us/dotnet/csharp/)     |    [Go](https://go.dev/)     |    [Rust](https://www.rust-lang.org/)    |          [Python](https://www.python.org/)           | [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) |
+  | :--------------------: | :------------------------------------------------------------: | :--------------------------: | :--------------------------------------: | :--------------------------------------------------: | :-------------------------------------------------------------------: |
+  |   **Web framework**    | [ASP.NET Core](https://dotnet.microsoft.com/en-us/apps/aspnet) | [Fibre](https://gofiber.io/) | [Axum](https://github.com/tokio-rs/axum) | [Flask](https://flask.palletsprojects.com/en/2.3.x/) |                   [Express](https://expressjs.com/)                   |
+  | **Database connector** |     [EF Core](https://learn.microsoft.com/en-us/ef/core/)      |   [GORM](https://gorm.io/)   |       [Diesel](http://diesel.rs/)        |   [Peewee](http://docs.peewee-orm.com/en/latest/)    |                [Sequelize](https://sequelize.org/v3/)                 |
 
 - Your API should implement these endpoints:
 
-  | Route | Method | Action | Response Code |
-  |:---:|:---:|:---:|:---:|
-  | `/api/todos` | GET | Returns all the to-do items already stored | 200 `OK` |
-  | `/api/todos/{id}` | GET | Returns a to-do item with key `id` | 200 `OK` or 404 `Not Found` |
-  | `/api/todos` | POST | Create a to-do item | 201 `Created` |
-  | `/api/todos/{id}` | PATCH | Edit the title or description of a to-do item with key `id` | 204 `No Content` or 404 `Not Found` |
-  | `/api/todos/{id}/status` | PUT | Modify the `completed` status of a to-do item with key `id` | 204 `No Content` or 404 `Not Found` |
-  | `/api/todos/{id}` | DELETE | Delete a to-do item with key `id` | 200 `OK` or 404 `Not Found` |
+  |          Route           | Method |                           Action                            |            Response Code            |
+  | :----------------------: | :----: | :---------------------------------------------------------: | :---------------------------------: |
+  |       `/api/todos`       |  GET   |         Returns all the to-do items already stored          |              200 `OK`               |
+  |    `/api/todos/{id}`     |  GET   |             Returns a to-do item with key `id`              |     200 `OK` or 404 `Not Found`     |
+  |       `/api/todos`       |  POST  |                     Create a to-do item                     |            201 `Created`            |
+  |    `/api/todos/{id}`     | PATCH  | Edit the title or description of a to-do item with key `id` | 204 `No Content` or 404 `Not Found` |
+  | `/api/todos/{id}/status` |  PUT   | Modify the `completed` status of a to-do item with key `id` | 204 `No Content` or 404 `Not Found` |
+  |    `/api/todos/{id}`     | DELETE |              Delete a to-do item with key `id`              |     200 `OK` or 404 `Not Found`     |
 
   You can find more information for the HTTP [verbs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) and possible [response codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) at the [MDN HTTP docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/).
 
