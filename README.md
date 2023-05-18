@@ -125,7 +125,7 @@ Let's break down what you ~~need to~~ should probably do into a few steps:
   
    Manually making sure everything works as intended is a Herculean task, which is why integration tests are key in a project like this. Ideally you should:
 
-   - Pick a nice testing framework, the one that comes inbuilt with your language might be okay but look around to see if there's any more suited to API endpoint testing (or just looks nicer) such as [xUnit](https://github.com/xunit/xunit), [Nextest](https://github.com/nextest-rs/), [gotestsum](https://github.com/gotestyourself/gotestsum), [pytest](https://docs.pytest.org/en/7.3.x/), and [Jest](https://jestjs.io/).
+   - Pick a nice testing framework, the one that comes inbuilt with your language might be okay but look around to see if there's any more suited to API endpoint testing (or just looks nicer) such as [xUnit](https://github.com/xunit/xunit), [gotestsum](https://github.com/gotestyourself/gotestsum), [Nextest](https://github.com/nextest-rs/), [pytest](https://docs.pytest.org/en/7.3.x/), and [Jest](https://jestjs.io/).
 
    - Make your (integration) tests resemble the real-life application as much as possible, in this case, a browser. Unit tests are fine and all, but integration tests treat your application as a [black box](https://en.wikipedia.org/wiki/Black_box). You'll probably want a simple HTTP client package/library in your language of choice:
   
@@ -157,9 +157,11 @@ Let's break down what you ~~need to~~ should probably do into a few steps:
 
      This is an extreme example...but you can see the first one provides so much more info on what works and what doesn't. Break down your tests as much as possible, it'll serve you better in the long run.
 
-   - Try, as much as *reasonably* possible, to make tests isolated from each other and idempotent (they should be able to run repeatedly without affecting the results of other tests). For a project like this, where a database is being modified, features like transactions (docs for [MySQL](https://dev.mysql.com/doc/refman/8.0/en/commit.html), [PostgresSQL](https://www.postgresql.org/docs/current/tutorial-transactions.html), [SQLite](https://www.sqlite.org/lang_transaction.html)) can allow you to make a change to the database, test a certain aspect, and then revert the change so that other tests aren't affected by lingering "effects" and can therefore be more accurate.
+   - Think (hard) about what your endpoint should achieve, and write appropriate tests before you even start implementing the handler. That way, you don't get boxed into testing just the cases you've accounted for after writing the function.
 
-     You can also consider the use of a container using engines like [Docker](https://www.docker.com/products/docker-desktop/) or [Podman](https://podman-desktop.io/) to spin up for a test, put in any needed data, and then get disposed of afterwards.
+   - Try, as much as *reasonably* possible, to make tests isolated and idempotent (they should be able to run repeatedly without affecting the results of other tests). For a project like this, where a database is being modified, features like transactions (docs for [MySQL](https://dev.mysql.com/doc/refman/8.0/en/commit.html), [PostgresSQL](https://www.postgresql.org/docs/current/tutorial-transactions.html), [SQLite](https://www.sqlite.org/lang_transaction.html)) can allow you to make a change to the database, test a certain aspect, and then revert the change so that other tests aren't affected by lingering "effects" and can therefore be more accurate.
+
+   You can also consider the use of a container using engines like [Docker](https://www.docker.com/products/docker-desktop/) or [Podman](https://podman-desktop.io/) to spin up for a test, put in any needed data, and then get disposed of afterwards.
 
 5. Couple the frontend application with your backend.
 
