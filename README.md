@@ -31,20 +31,22 @@ The API provides a consistent communication protocol, so that various parts of t
 
 - Your API should implement these endpoints:
 
-  |          Route           | Method |                           Action                            |            Response Code            |
-  | :----------------------: | :----: | :---------------------------------------------------------: | :---------------------------------: |
-  |       `/api/todos`       |  GET   |         Returns all the to-do items already stored          |              200 `OK`               |
-  |    `/api/todos/{id}`     |  GET   |             Returns a to-do item with key `id`              |     200 `OK` or 404 `Not Found`     |
-  |       `/api/todos`       |  POST  |                     Create a to-do item                     |            201 `Created`            |
-  |    `/api/todos/{id}`     | PATCH  | Edit the title or description of a to-do item with key `id` | 204 `No Content` or 404 `Not Found` |
-  | `/api/todos/{id}/status` |  PUT   | Modify the `completed` status of a to-do item with key `id` | 204 `No Content` or 404 `Not Found` |
-  |    `/api/todos/{id}`     | DELETE |              Delete a to-do item with key `id`              |     200 `OK` or 404 `Not Found`     |
+  |          Route           | Method |                                        Action                                         |        Response Code        |
+  | :----------------------: | :----: | :-----------------------------------------------------------------------------------: | :-------------------------: |
+  |       `/api/todos`       |  GET   |                      Returns all the to-do items already stored                       |          200 `OK`           |
+  |    `/api/todos/{id}`     |  GET   |                          Returns a to-do item with key `id`                           | 200 `OK` or 404 `Not Found` |
+  |       `/api/todos`       |  POST  |                                  Create a to-do item                                  |        201 `Created`        |
+  |    `/api/todos/{id}`     | PATCH  | Edit the title or description of a to-do item with key `id`, returns the updated item | 200 `OK` or 404 `Not Found` |
+  | `/api/todos/{id}/status` |  PUT   | Modify the `completed` status of a to-do item with key `id`, returns the updated item | 200 `OK` or 404 `Not Found` |
+  |    `/api/todos/{id}`     | DELETE |                           Delete a to-do item with key `id`                           | 200 `OK` or 404 `Not Found` |
 
   You can find more information for the HTTP [verbs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) and possible [response codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) at the [MDN HTTP docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/).
 
 - You are not required to build the frontend to test your application, there's one already provided and you can follow [these instructions](Adding%20Frontend.md) to link it to your own backend.
 
 - You can also upload your binary to a service like [Render](https://render.com/docs/web-services#deploy-your-own-code) to make it available on the public web if you wish to do so.
+  
+- An endpoint tester has also been created for this project over [here](https://todo-rest-api-tester.vercel.app/), once you've made your API live you can simply go over there and make sure your implementation conforms to the spec.
 
 ## sorry i'm a bit new to this whole...thing, what exactly am i doing
 
@@ -75,6 +77,8 @@ Let's break down what you ~~need to~~ should probably do into a few steps:
    - [Python Crash Course](https://nostarch.com/python-crash-course-3rd-edition) introduces the language by having you build numerous projects, exposing you to a lot of popular packages and programming fundamentals.
    - [Eloquent JavaScript](https://eloquentjavascript.net/) and [Microsoft's Introduction to Node.js](https://learn.microsoft.com/en-us/training/paths/build-javascript-applications-nodejs/) introduce you to the language itself and Node.js (which is the most popular way of running it outside a browser) respectively.
 
+   Keep in mind you don't necessarily have to finish all the books from cover to cover, a lot of the information is pretty advanced and you'd probably have a better grasp of it after you've completed this project (and understand the fundamentals).
+
 2. Figure out how data is going to be stored in the database.
 
    Most likely, you'll be required to model the objects you're storing. In this case, it's a simple todo item. Using C#, you would have something roughly like this:
@@ -91,7 +95,7 @@ Let's break down what you ~~need to~~ should probably do into a few steps:
    }
    ```
 
-   Then you'll have to connect this model to your database and instruct it to set itself up so you can put it in. The instructions are going to differ,  depending on which connector you use, so the documentation is going to be the best place to start.
+   Then you'll have to connect this model to your database and instruct it to set itself up so you can put it in. The instructions are going to differ, depending on which connector you use, so the documentation is going to be the best place to start.
 
 3. Set up your app to perform actions based on requests sent to it.
 
@@ -167,8 +171,14 @@ Let's break down what you ~~need to~~ should probably do into a few steps:
 
    If you'd like to see a functioning version of what the final application could look like, follow the instructions in the [Adding Frontend](Adding%20Frontend.md) document to get started with that.
 
+6. Put it up for the world to see.
+
+   If you want you can just put the API up using a service like [Render](https://render.com/docs/web-services#deploy-your-own-code), and try out our [endpoint tester](https://todo-rest-api-tester.vercel.app/) on it. You could also make a frontend application that builds on it if you're so inclined, and host that using a service like [Vercel](https://vercel.com/).
+
 ## Next steps
 
 We hope you had fun for this ride. It was pretty unsupervised but that's the joy of it -- doing this by yourself will be hard at the beginning, but it gets you used to looking up information and finding ways to solve problems, as opposed to just being spoon-fed information.
+
+If you're interested doing more in backend development, the linked resources above really good -- try going through them if you didn't finish the first time around. The Internet is also a great place to check out, and there's tons of resources out there to get you even further along in the field.
 
 If you've completed this project, do add it to the [showcase repo](https://github.com/dsccovenantuniversity/backendprojects), we'd love to see what tools you used and how you chose to overcome these problems.
